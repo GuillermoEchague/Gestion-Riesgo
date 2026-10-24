@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101b2d">
+  <title>Riesgo TI · Gestión de ciberseguridad</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#inicio"><span class="brand-mark">R</span><span><b>Riesgo TI</b><small>GESTIÓN DE CIBERSEGURIDAD</small></span></a>
+    <div class="side-label">ESPACIO DE TRABAJO</div>
+    <nav aria-label="Navegación principal">
+      <a class="nav-item active" href="#inicio"><span>▦</span> Panel general</a>
+      <a class="nav-item" href="#registro"><span>◉</span> Registro de riesgos <span id="nav-count" class="nav-count">0</span></a>
+      <a class="nav-item" href="#metodologia"><span>⌘</span> Metodología</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="status-dot"></div><span>Datos guardados en este equipo</span></div>
+  </aside>
+
+  <main>
+    <header class="topbar"><div><span class="crumb">CIBERSEGURIDAD</span><span class="crumb-sep">/</span><span>ANÁLISIS DE RIESGO TI</span></div><div class="top-actions"><button class="button button-quiet" id="import-top">↑ <span>Importar</span></button><button class="button button-quiet" id="export-top">↓ <span>Exportar</span></button></div></header>
+    <div class="content">
+      <section id="inicio" class="hero">
+        <div><div class="eyebrow"><span class="eyebrow-line"></span> GESTIÓN DE RIESGOS DE TECNOLOGÍA</div><h1>Panel de riesgos TI</h1><p class="hero-copy">Identifica, evalúa y trata los riesgos de los activos y procesos de tu organización.</p></div>
+        <button class="button button-primary" id="new-risk"><span class="plus">＋</span> Nuevo riesgo</button>
+      </section>
+
+      <section class="metrics" aria-label="Resumen del registro">
+        <article class="metric-card"><div class="metric-head"><span>RIESGOS IDENTIFICADOS</span><span class="metric-icon icon-blue">◉</span></div><div class="metric-value" id="total-count">0</div><div class="metric-note">En el registro actual</div></article>
+        <article class="metric-card"><div class="metric-head"><span>CRÍTICOS Y ALTOS</span><span class="metric-icon icon-red">↗</span></div><div class="metric-value" id="high-count">0</div><div class="metric-note">Requieren atención prioritaria</div></article>
+        <article class="metric-card"><div class="metric-head"><span>EN TRATAMIENTO</span><span class="metric-icon icon-violet">⟳</span></div><div class="metric-value" id="treat-count">0</div><div class="metric-note">Plan de acción en seguimiento</div></article>
+        <article class="metric-card"><div class="metric-head"><span>RIESGO RESIDUAL ALTO</span><span class="metric-icon icon-amber">△</span></div><div class="metric-value" id="residual-count">0</div><div class="metric-note">Después de los controles</div></article>
+      </section>
+
+      <section class="panel" id="registro">
+        <div class="panel-header"><div><h2>Registro de riesgos</h2><p>Evalúa la exposición y haz seguimiento de cada tratamiento.</p></div><button class="button button-outline" id="new-risk-2">＋ Añadir riesgo</button></div>
+        <div class="toolbar"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Buscar riesgo, activo o responsable…" aria-label="Buscar en los riesgos"></label><select id="filter-level" aria-label="Filtrar por nivel"><option value="all">Todos los niveles</option><option>Crítico</option><option>Alto</option><option>Moderado</option><option>Bajo</option></select><select id="filter-status" aria-label="Filtrar por estado"><option value="all">Todos los estados</option><option>Identificado</option><option>En tratamiento</option><option>Aceptado</option><option>Cerrado</option></select></div>
+        <div class="table-wrap"><table><thead><tr><th>RIESGO / ACTIVO</th><th>CATEGORÍA</th><th>INHERENTE</th><th>TRATAMIENTO</th><th>RESPONSABLE</th><th>RESIDUAL</th><th></th></tr></thead><tbody id="risk-rows"></tbody></table><div id="empty-state" class="empty-state"><div class="empty-icon">◉</div><h3>Tu registro está listo</h3><p>Añade un riesgo para comenzar a evaluar la exposición de tus activos y procesos TI.</p><button class="button button-primary" id="empty-new">＋ Registrar primer riesgo</button></div></div>
+        <div class="table-footer"><span id="table-summary">0 riesgos</span><span>Escala 1–25 · Probabilidad × impacto</span></div>
+      </section>
+
+      <section class="bottom-grid">
+        <article class="panel compact-panel"><div class="panel-header"><div><h2>Mapa de calor</h2><p>Distribución por probabilidad e impacto</p></div><span class="tiny-badge">5 × 5</span></div><div class="heatmap-layout"><div class="axis-y">PROBABILIDAD</div><div class="heatmap-main"><div class="heatmap" id="heatmap" role="img" aria-label="Mapa de calor de riesgos"></div><div class="axis-x"><span>BAJO</span><span>IMPACTO</span><span>CRÍTICO</span></div></div></div><div class="heat-legend"><span><i class="legend-dot low-dot"></i>Bajo</span><span><i class="legend-dot mod-dot"></i>Moderado</span><span><i class="legend-dot high-dot"></i>Alto</span><span><i class="legend-dot crit-dot"></i>Crítico</span></div></article>
+        <article class="panel compact-panel" id="metodologia"><div class="panel-header"><div><h2>Metodología</h2><p>Criterios de evaluación configurados</p></div><span class="tiny-badge badge-iso">ISO 27001</span></div><div class="method-list"><div class="method-row"><span class="method-num">01</span><div><b>Identificación</b><p>Activo, amenaza, vulnerabilidad y consecuencia.</p></div></div><div class="method-row"><span class="method-num">02</span><div><b>Análisis inherente</b><p>Probabilidad (1–5) × impacto CIA (1–5).</p></div></div><div class="method-row"><span class="method-num">03</span><div><b>Tratamiento</b><p>Mitigar, evitar, transferir o aceptar el riesgo.</p></div></div><div class="method-row"><span class="method-num">04</span><div><b>Seguimiento</b><p>Responsable, fecha, estado y riesgo residual.</p></div></div></div><div class="method-foot">Alineada con el material de evaluación y tratamiento de riesgos de la carpeta.</div></article>
+      </section>
+      <footer class="footer"><span>Riesgo TI <span class="footer-sep">·</span> Herramienta local de apoyo</span><button id="clear-data" class="text-button">Borrar datos locales</button></footer>
+    </div>
+  </main>
+
+  <dialog id="risk-dialog"><form id="risk-form" method="dialog"><div class="dialog-head"><div><div class="eyebrow"><span class="eyebrow-line"></span> REGISTRO DE RIESGO</div><h2 id="dialog-title">Nuevo riesgo</h2></div><button type="button" class="close-button" id="close-dialog" aria-label="Cerrar">×</button></div><input type="hidden" id="risk-id"><div class="form-grid"><label class="field full">Nombre del riesgo<input required id="risk-name" maxlength="120" placeholder="Ej. Acceso no autorizado a servidores críticos"></label><label class="field">Activo o proceso<input required id="risk-asset" maxlength="100" placeholder="Ej. Servidor ERP"></label><label class="field">Categoría<select id="risk-category"><option>Ciberseguridad</option><option>Continuidad</option><option>Infraestructura TI</option><option>Datos y privacidad</option><option>Proveedor</option><option>Cumplimiento</option><option>Personas</option><option>Otro</option></select></label><label class="field full">Amenaza y vulnerabilidad<textarea required id="risk-cause" rows="2" placeholder="¿Qué amenaza explota qué debilidad?"></textarea></label><label class="field full">Consecuencia para el negocio<textarea required id="risk-impact-desc" rows="2" placeholder="Impacto en confidencialidad, integridad, disponibilidad, operación o cumplimiento"></textarea></label><div class="field"><span class="field-label">Probabilidad <span class="hint">1 rara · 5 casi segura</span></span><select id="risk-likelihood"><option value="1">1 · Rara</option><option value="2">2 · Improbable</option><option value="3" selected>3 · Posible</option><option value="4">4 · Probable</option><option value="5">5 · Casi segura</option></select></div><div class="field"><span class="field-label">Impacto <span class="hint">1 insignificante · 5 crítico</span></span><select id="risk-impact"><option value="1">1 · Insignificante</option><option value="2">2 · Menor</option><option value="3" selected>3 · Moderado</option><option value="4">4 · Mayor</option><option value="5">5 · Crítico</option></select></div><label class="field">Tratamiento<select id="risk-treatment"><option>Mitigar</option><option>Evitar</option><option>Transferir</option><option>Aceptar</option></select></label><label class="field">Estado<select id="risk-status"><option>Identificado</option><option>En tratamiento</option><option>Aceptado</option><option>Cerrado</option></select></label><label class="field full">Plan de acción / controles<textarea id="risk-plan" rows="2" placeholder="Acciones, controles existentes o medidas previstas"></textarea></label><label class="field">Responsable<input id="risk-owner" maxlength="80" placeholder="Nombre o equipo"></label><label class="field">Fecha objetivo<input id="risk-due" type="date"></label><label class="field full">Impacto residual estimado <span class="hint">Tras aplicar el tratamiento</span><select id="risk-residual"><option value="">Sin estimar</option><option value="1">1 · Insignificante</option><option value="2">2 · Menor</option><option value="3">3 · Moderado</option><option value="4">4 · Mayor</option><option value="5">5 · Crítico</option></select></label></div><div class="dialog-actions"><button type="button" class="button button-quiet" id="cancel-dialog">Cancelar</button><button type="submit" class="button button-primary">Guardar riesgo</button></div></form></dialog>
+  <input type="file" id="import-file" accept=".json,application/json" hidden>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body></html>
